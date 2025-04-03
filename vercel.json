@@ -2,30 +2,30 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.py", // Point to your Flask app file
+      "src": "api/index.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb" } 
     }
     {
-      "src": "frontend/**", // Specify frontend files
+      "src": "frontend/**",
        "use": "@vercel/static" 
     }
   ]
   "routes": [
     {
-       "src": "/static/(.*)", // Route for static assets if needed later
+       "src": "/static/(.*)", 
        "dest": "/frontend/static/$1" 
     }
     {
-      "src": "/api/(.*)", // Route API requests directly
-      "dest": "api/index.py" // Point to your Flask app file
+      "src": "/api/(.*)", 
+      "dest": "api/index.py" 
     }
      {
-         "src": "/estimate", // Catch requests specifically for /estimate
-         "dest": "api/index.py" // Route them to your Flask app
+         "src": "/estimate", 
+         "dest": "api/index.py" 
      }
     {
-       "src": "/(.*)", // Route all other requests to the frontend
+       "src": "/(.*)", 
        "dest": "/frontend/$1" 
     }
   ]
